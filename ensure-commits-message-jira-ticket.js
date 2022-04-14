@@ -32,12 +32,12 @@ let ok = git
       ],
     };
 
-    logger.logKeyValuePair("commit", commit);
+    logger.logKeyValuePair("commit", commit.subject);
 
     if (!commitMessageOk) {
       logger.logError(`no ticket provided for the commit`)
     } else {
-      logger.logError(`the commit has a ticket`)
+      logger.logSucceed(`the commit has a ticket`)
     }
     logger.logKeyValuePair("result", result);
     return commitMessageOk;
