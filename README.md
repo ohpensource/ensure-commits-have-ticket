@@ -28,3 +28,7 @@ jobs:
 ```
 
 The action essentially scans your commit messages [looking](https://stackoverflow.com/questions/19322669/regular-expression-for-a-jira-identifier) for JIRA tickets. In case a commit has no ticket, the action will fail.
+
+## remarks
+
+:warning: commits that contain `[skip ci]` are skipped from the validation.
