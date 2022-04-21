@@ -14,6 +14,13 @@ let ok = git
   .getCommitsInsidePullRequest(baseBranch, `origin/${prBranch}`)
   .every((commit) => {
     logger.logTitle("EVALUATING COMMIT");
+
+    if (commit.subject.includes('[skip ci]')) {
+      logger.logWarning(`skipping commit validation because contains [skip ci].`)
+      logger.logKeyValuePair("commit", commit.subject);
+      return true
+    }
+
     let commitMessage = `${commit.subject} ${commit.body}`;
     const reversedTickets = reverse(commitMessage).match(
       /\d+-[A-Z]+(?!-?[a-zA-Z]{1,10})/g
@@ -29,6 +36,8 @@ let ok = git
       examples: [
         "feat: GMP-323 awesome new feature",
         "break: removing GET /ping endpoint (LANZ-3456)",
+        "feat (app1): awesome new feature in the app1",
+        "[skip ci] doing some ci magic"
       ],
     };
 
