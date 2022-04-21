@@ -1,3 +1,9 @@
+# :confetti_ball: 0.0.3 (2022-04-21T11:50:09.396Z)
+- - -
+## :bug: Fixes
+* LANZ-2349 skipping commits that contain skip ci (#2)
+- - -
+- - -
 # :confetti_ball: 0.0.2 (2022-04-14T08:52:04.441Z)
 - - -
 ## :bug: Fixes
