@@ -8,13 +8,7 @@ on:
   pull_request:
     branches: ["main"]
 jobs:
-  check-jira-tickets-commits:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-  jira-tickets-commits:
+  ensure-commits-have-tickets:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
