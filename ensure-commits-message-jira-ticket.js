@@ -1,14 +1,29 @@
 const git = require("./git.js");
 const logger = require("./logging.js");
+const inputParser = require("./input-param-parse.js");
 const reverse = (str) => str.split("").reverse().join("");
 
 logger.logTitle("ENSURING JIRA TICKETS INTO COMMIT MESSAGES");
 
 const baseBranch = process.argv[2];
 const prBranch = process.argv[3];
+const ignorePrFromBranches = process.argv[4];
 
 logger.logKeyValuePair("base-branch", baseBranch);
 logger.logKeyValuePair("pr-branch", prBranch);
+logger.logKeyValuePair("ignore-pr-from-branches", ignorePrFromBranches);
+
+if (ignorePrFromBranches) {  
+
+  let fromBranchesArray = inputParser.parseStringArray(ignorePrFromBranches,'[a-zA-Z0-9]{3,}','ignore-pr-from-branches')
+  
+  const prBranchMatchAnyIgnoreFromBranch = fromBranchesArray.filter(fb => prBranch.match(fb))
+
+  if (prBranchMatchAnyIgnoreFromBranch.length > 0) {
+    logger.logWarning("Ignoring ensure jira tickets into commit messages, ignore-pr-from-branches matches: " + prBranchMatchAnyIgnoreFromBranch)
+    process.exit(0)
+  }
+}
 
 let ok = git
   .getCommitsInsidePullRequest(baseBranch, `origin/${prBranch}`)
