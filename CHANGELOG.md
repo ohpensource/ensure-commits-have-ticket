@@ -1,3 +1,9 @@
+# :confetti_ball: 0.1.0 (2022-08-22T14:05:20.082Z)
+- - -
+## :hammer: Features
+* SPT-426 - Added ignore-pr-from-branches input parameter (#3)
+- - -
+- - -
 # :confetti_ball: 0.0.4 (2022-05-11T09:23:04.665Z)
 - - -
 ## :newspaper: Others
