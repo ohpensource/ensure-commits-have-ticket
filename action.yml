@@ -27,5 +27,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: node ${{ github.action_path }}/ensure-commits-message-jira-ticket.js ${{ inputs.base-branch }} ${{ inputs.pr-branch }} '${{ inputs.ignore-pr-from-branches }}'
-      shell: bash
+    - shell: bash
+      run: |
+        node ${{ github.action_path }}/ensure-commits-message-jira-ticket.js \
+          "${{ inputs.base-branch }}" \
+          "${{ inputs.pr-branch }}" \
+          "${{ inputs.ignore-pr-from-branches }}"
