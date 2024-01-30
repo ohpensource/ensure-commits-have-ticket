@@ -5,24 +5,24 @@ const parseStringArray = (strArray,entryRegex,varName) => {
   const isArray = Array.isArray(arrayParsed)
 
   if (!isArray){
-    logger.logError(`${varName??'It'} must be an array.`)   
+    logger.logError(`${varName || 'It'} must be an array.`)
     process.exit(1)
   }
 
   arrayParsed.forEach((element,i) => {
-    logger.logKeyValuePair(`${varName??'Array'}[${i}]`,element)
+    logger.logKeyValuePair(`${varName || 'Array'}[${i}]`,element)
   });
 
   const allElementsAreString = arrayParsed.every(fb => typeof fb === "string" && fb.trim() !== "")
   if (!allElementsAreString){
-    logger.logError( `${varName??'The'} entries must only contain not empty strings.`)   
+    logger.logError( `${varName || 'The'} entries must only contain not empty strings.`)
     process.exit(1)
   }
 
   if (entryRegex) {
     const allEntriesFollowRegex = arrayParsed.every(fb => fb.match(entryRegex))
     if (!allEntriesFollowRegex) {
-      logger.logError(`${varName??'The'} entries needs to follow that regular expression '${entryRegex}'.`)    
+      logger.logError(`${varName || 'The'} entries needs to follow that regular expression '${entryRegex}'.`)
       process.exit(1)
     }
   }
@@ -41,7 +41,7 @@ const parseArray = (arrayInput,varName) => {
       return JSON.parse(arrayInputTrimmed)
     }
     catch(e){
-      errorMessage = `${varName??'It'} is not a valid json array.`
+      errorMessage = `${varName || 'It'} is not a valid json array.`
       logger.logError(errorMessage)
       return
     }
