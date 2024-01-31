@@ -2,7 +2,6 @@
 
 This action checks that ALL commits present in a pull request include a JIRA ticket. Useful for teams that require an extra level of traceability on their work and tasks. Here is an example:
 
-
 ```yml
 name: CI
 on:
