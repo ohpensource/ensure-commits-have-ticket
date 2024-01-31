@@ -1,3 +1,11 @@
+# :confetti_ball: 0.1.2 (2024-01-31T00:30:37.600Z)
+- - -
+## :bug: Fixes
+* CMM-22507 fix problem with old version of ECMAScript on ubuntu self-hosted runners
+## :newspaper: Others
+* docs: CMM-22507 remove empty line
+- - -
+- - -
 # :confetti_ball: 0.1.1 (2022-09-30T12:55:41.401Z)
 - - -
 ## :bug: Fixes
